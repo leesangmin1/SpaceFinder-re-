@@ -62,92 +62,92 @@
 		style="background-image: url('/resources/publishing-company-master/images/bg_5.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
-				<div class="col-md-9 ftco-animate mb-0 text-center">
-					<p class="breadcrumbs mb-0">
-						<span class="mr-2"><a href="/" style="color: white;">SpaceFinder
-								<i class="fa fa-chevron-right"></i>
-						</a></span> <span class="mr-2"><a href="/goodplace/main"
-							style="color: white;">굿플레이스 <i class="fa fa-chevron-right"></i></a></span>
-						<span style="color: white;">${gpView.GP_name } <i
-							class="fa fa-chevron-right"></i>
-						</span>
-					</p>
-					<h1 class="mb-0 bread" style="color: white;">${gpView.GP_name }</h1>
-				</div>
-			</div>
+		<div class="col-md-9 ftco-animate mb-0 text-center">
+			<p class="breadcrumbs mb-0">
+				<span class="mr-2"><a href="/" style="color: white;">SpaceFinder
+						<i class="fa fa-chevron-right"></i>
+				</a></span> <span class="mr-2"><a href="/goodplace/main"
+					style="color: white;">굿플레이스 <i class="fa fa-chevron-right"></i></a></span>
+				<span style="color: white;">${gpView.GP_name } <i
+					class="fa fa-chevron-right"></i>
+				</span>
+			</p>
+			<h1 class="mb-0 bread" style="color: white;">${gpView.GP_name }</h1>
+		</div>
+		</div>
 		</div>
 	</section>
 
 	<section class="ftco-section ftco-degree-bg">
 		<div class="container">
 
-				<div class="center-block">
+			<div class="center-block">
 
-					<h2 class="mb-3" style="text-align: center;">${gpView.GP_name}</h2>
+				<h2 class="mb-3" style="text-align: center;">${gpView.GP_name}</h2>
 
-					<div class="row ftco-animate">
-						<div class="col-md-12">
-							<div class="carousel-testimony owl-carousel ftco-owl">
-								<div class="item">
-									<img src="http://54.180.89.92:8080/img${gpView.GP_image1}"
-										alt="" class="img-fluid" width="200">
-								</div>
-								<div class="item">
-									<img src="http://54.180.89.92:8080/img${gpView.GP_image2}"
-										alt="" class="img-fluid" width="200">
-								</div>
-								<div class="item">
-									<img src="http://54.180.89.92:8080/img${gpView.GP_image3}"
-										alt="" class="img-fluid" width="200">
-								</div>
-								<div class="item">
-									<img src="http://54.180.89.92:8080/img${gpView.GP_image4}"
-										alt="" class="img-fluid" width="200">
-								</div>
+				<div class="row ftco-animate">
+					<div class="col-md-12">
+						<div class="carousel-testimony owl-carousel ftco-owl">
+							<div class="item">
+								<img src="http://54.180.89.92:8080/img${gpView.GP_image1}"
+									alt="" class="img-fluid" width="200">
+							</div>
+							<div class="item">
+								<img src="http://54.180.89.92:8080/img${gpView.GP_image2}"
+									alt="" class="img-fluid" width="200">
+							</div>
+							<div class="item">
+								<img src="http://54.180.89.92:8080/img${gpView.GP_image3}"
+									alt="" class="img-fluid" width="200">
+							</div>
+							<div class="item">
+								<img src="http://54.180.89.92:8080/img${gpView.GP_image4}"
+									alt="" class="img-fluid" width="200">
 							</div>
 						</div>
 					</div>
+				</div>
 
-					<p>
-						카테고리 : ${gpView.gp_ca_name }<br>
-						<c:if test="${gpView.GP_category ne 'parking' }">
+				<p>
+					카테고리 : ${gpView.gp_ca_name }<br>
+					<c:if test="${gpView.GP_category ne 'parking' }">
 						주차장 유무 :
 						<c:choose>
-								<c:when test="${gpView.GP_parking eq 'parking'}"> 자체주차장 있음</c:when>
-								<c:when test="${gpView.GP_parking eq 'none'}"> 없음</c:when>
-							</c:choose>
-						</c:if>
-						<br>영업시간 : ${gpView.GP_Runtime }<br>정기 휴일 :
-						${gpView.GP_restday }<br>
-						<c:if
-							test="${gpView.GP_parking eq 'parking' and gpView.GP_category ne 'parking' }">
+							<c:when test="${gpView.GP_parking eq 'parking'}"> 자체주차장 있음</c:when>
+							<c:when test="${gpView.GP_parking eq 'none'}"> 없음</c:when>
+						</c:choose>
+					</c:if>
+					<br>영업시간 : ${gpView.GP_Runtime }<br>정기 휴일 :
+					${gpView.GP_restday }<br>
+					<c:if
+						test="${gpView.GP_parking eq 'parking' and gpView.GP_category ne 'parking' }">
 						주차 면수 : ${gpView.GP_slot }
 					</c:if>
-						<c:if test="${gpView.GP_category eq 'parking' }">
+					<c:if test="${gpView.GP_category eq 'parking' }">
 						주차 면수 : ${gpView.GP_slot }<br>기본시간 : ${gpView.GP_basetime }<br>기본 요금 : ${gpView.GP_basepay }<br>기본시간 초과시 : ${gpView.GP_overtime } ${gpView.GP_overpay }<br>하루 요금 : ${gpView.GP_onepay }<br>한달 요금 : ${gpView.GP_monthpay }
 					</c:if>
-					</p>
-					<br> <br>
-					<p>${gpView.GP_content }</p>
-					
-					<label class="label">위치</label>
-					<div id="map" style="width: 100%; height: 400px; margin: 10px"></div>
-					<code id="snippet" class="snippet"></code>
-					
-					<div
-                  style="display: flex; align-items: space-between; justify-content: space-between;">
-                  <div class="in-text">
-                     <a href="#"
-                        class="icon d-flex align-items-center justify-content-center"
-                        data-toggle="tooltip" data-placement="left"
-                        title="주차장 바로가기 등록"> <span class="flaticon-heart-1"></span>
-                     </a>
-                  </div>
-                  <button id="movemain" class="btn btn-primary" type="button"
-                     style="margin-right: 10px"
-                     onclick="location.href='/goodplace/main'">목록</button>
-               </div>
-               
+				</p>
+				<br> <br>
+				<p>${gpView.GP_content }</p>
+
+				<label class="label">위치</label>
+				<div id="map" style="width: 100%; height: 400px; margin: 10px"></div>
+				<code id="snippet" class="snippet"></code>
+
+				<div
+					style="display: flex; align-items: space-between; justify-content: space-between;">
+					<div class="in-text">
+						<a href="#"
+							class="icon d-flex align-items-center justify-content-center"
+							data-toggle="tooltip" data-placement="left" title="주차장 바로가기 등록">
+							<span class="flaticon-heart-1"></span>
+						</a>
+					</div>
+					<button id="movemain" class="btn btn-primary" type="button"
+						style="margin-right: 10px"
+						onclick="location.href='/goodplace/main'">목록</button>
+				</div>
+
 			</div>
 		</div>
 	</section>
