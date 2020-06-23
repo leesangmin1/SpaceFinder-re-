@@ -62,6 +62,9 @@
 		style="background-image: url('/resources/publishing-company-master/images/bg_5.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text align-items-center justify-content-center">
 				<div class="col-md-9 ftco-animate mb-0 text-center">
 					<p class="breadcrumbs mb-0">
 						<span class="mr-2"><a href="/" style="color: white;">SpaceFinder
@@ -80,8 +83,46 @@
 
 	<section class="ftco-section ftco-degree-bg">
 		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 sidebar pl-lg-3 ftco-animate">
+					<div class="sidebar-box">
+						<form action="#" class="search-form">
+							<div class="form-group">
+								<span class="fa fa-search"></span> <input type="text"
+									class="form-control" placeholder="검색">
+							</div>
+						</form>
+					</div>
+					<div class="sidebar-box ftco-animate">
+						<div class="categories">
+							<h3>카테고리</h3>
+							<ul>
+								<c:forEach items="${catelist}" var="catelist">
+									<li><a href="#" id="${catelist.gp_ca_id }">${catelist.gp_ca_name }
+											<span class="fa fa-chevron-right"></span>
+									</a></li>
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
 
-				<div class="center-block">
+					<div class="sidebar-box ftco-animate">
+						<h3>인기 굿플</h3>
+						<ul class="top">
+							<li><a href="#">굿플1</a></li>
+							<li><a href="#">굿플2</a></li>
+							<li><a href="#">굿플3</a></li>
+							<li><a href="#">굿플4</a></li>
+							<li><a href="#">굿플5</a></li>
+							<li><a href="#">굿플6</a></li>
+							<li><a href="#">굿플7</a></li>
+							<li><a href="#">굿플8</a></li>
+							<li><a href="#">굿플9</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-8 ftco-animate">
 
 					<h2 class="mb-3" style="text-align: center;">${gpView.GP_name}</h2>
 
@@ -133,21 +174,61 @@
 					<label class="label">위치</label>
 					<div id="map" style="width: 100%; height: 400px; margin: 10px"></div>
 					<code id="snippet" class="snippet"></code>
-					
+
 					<div
-                  style="display: flex; align-items: space-between; justify-content: space-between;">
-                  <div class="in-text">
-                     <a href="#"
-                        class="icon d-flex align-items-center justify-content-center"
-                        data-toggle="tooltip" data-placement="left"
-                        title="주차장 바로가기 등록"> <span class="flaticon-heart-1"></span>
-                     </a>
-                  </div>
-                  <button id="movemain" class="btn btn-primary" type="button"
-                     style="margin-right: 10px"
-                     onclick="location.href='/goodplace/main'">목록</button>
-               </div>
-               
+						style="display: flex; align-items: flex-end; justify-content: flex-end;">
+						<button id="updategoodplace" class="btn btn-primary" type="button"
+							style="margin-right: 10px"
+							onclick="location.href='/goodplace/gpUpdate?GP_id='+${gpView.GP_id }">수정</button>
+
+						<button id="deletegoodplace" class="btn btn-primary" type="button"
+							style="margin-right: 10px"
+							onclick="location.href='/goodplace/gpDelete?GP_id='+${gpView.GP_id }">삭제</button>
+
+						<button id="movemain" class="btn btn-primary" type="button"
+							style="margin-right: 10px"
+							onclick="location.href='/goodplace/main'">목록</button>
+					</div>
+
+
+					<div class="pt-5 mt-5" id="div_reply">
+						<div class="comment-form-wrap pt-5">
+							<form class="p-5 bg-light">
+								<input type="text" id="userId" value="${member.userId }"
+									style="display: none;" /> <input type="text" id="GP_REF_ID"
+									value="${gpView.GP_id }" style="display: none;" /> <label
+									for="gp_reply">댓글 남기기</label>
+								<textarea name="reply_content" id="reply_content" cols="30"
+									rows="3" class="form-control"></textarea>
+								<button id="submitReply" class="btn py-3 px-4 btn-primary"
+									type="button" style="margin-top: 10px;">등록</button>
+							</form>
+						</div>
+						<c:if test="${not empty reply }">
+							<h3 class="mb-5">댓글</h3>
+							<ul class="comment-list" id="reply_list">
+								<c:forEach items="${reply}" var="reply">
+									<li class="comment">
+										<div class="comment-body">
+											<h3>${reply.username }</h3>
+											<div class="meta">
+												<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
+													value="${reply.GP_date }" />
+											</div>
+											<p>${reply.GP_content }</p>
+											<p>
+												<a href="#" class="reply">Reply</a>
+											</p>
+										</div>
+									</li>
+								</c:forEach>
+							</ul>
+						</c:if>
+						<!-- END comment-list -->
+
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</section>
