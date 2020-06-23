@@ -62,7 +62,6 @@
 		style="background-image: url('/resources/publishing-company-master/images/bg_5.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
-<<<<<<< HEAD
 		<div class="col-md-9 ftco-animate mb-0 text-center">
 			<p class="breadcrumbs mb-0">
 				<span class="mr-2"><a href="/" style="color: white;">SpaceFinder
@@ -76,53 +75,12 @@
 			<h1 class="mb-0 bread" style="color: white;">${gpView.GP_name }</h1>
 		</div>
 		</div>
-=======
-		<div class="container">
-			<div
-				class="row no-gutters slider-text align-items-center justify-content-center">
-				<div class="col-md-9 ftco-animate mb-0 text-center">
-					<p class="breadcrumbs mb-0">
-						<span class="mr-2"><a href="/" style="color: white;">SpaceFinder
-								<i class="fa fa-chevron-right"></i>
-						</a></span> <span class="mr-2"><a href="/goodplace/main"
-							style="color: white;">굿플레이스 <i class="fa fa-chevron-right"></i></a></span>
-						<span style="color: white;">${gpView.GP_name } <i
-							class="fa fa-chevron-right"></i>
-						</span>
-					</p>
-					<h1 class="mb-0 bread" style="color: white;">${gpView.GP_name }</h1>
-				</div>
-			</div>
->>>>>>> parent of 3c36e36... 0624comple
 		</div>
 	</section>
 
 	<section class="ftco-section ftco-degree-bg">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 sidebar pl-lg-3 ftco-animate">
-					<div class="sidebar-box">
-						<form action="#" class="search-form">
-							<div class="form-group">
-								<span class="fa fa-search"></span> <input type="text"
-									class="form-control" placeholder="검색">
-							</div>
-						</form>
-					</div>
-					<div class="sidebar-box ftco-animate">
-						<div class="categories">
-							<h3>카테고리</h3>
-							<ul>
-								<c:forEach items="${catelist}" var="catelist">
-									<li><a href="#" id="${catelist.gp_ca_id }">${catelist.gp_ca_name }
-											<span class="fa fa-chevron-right"></span>
-									</a></li>
-								</c:forEach>
-							</ul>
-						</div>
-					</div>
 
-<<<<<<< HEAD
 			<div class="center-block">
 
 				<h2 class="mb-3" style="text-align: center;">${gpView.GP_name}</h2>
@@ -145,47 +103,6 @@
 							<div class="item">
 								<img src="http://54.180.89.92:8080/img${gpView.GP_image4}"
 									alt="" class="img-fluid" width="200">
-=======
-					<div class="sidebar-box ftco-animate">
-						<h3>인기 굿플</h3>
-						<ul class="top">
-							<li><a href="#">굿플1</a></li>
-							<li><a href="#">굿플2</a></li>
-							<li><a href="#">굿플3</a></li>
-							<li><a href="#">굿플4</a></li>
-							<li><a href="#">굿플5</a></li>
-							<li><a href="#">굿플6</a></li>
-							<li><a href="#">굿플7</a></li>
-							<li><a href="#">굿플8</a></li>
-							<li><a href="#">굿플9</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-lg-8 ftco-animate">
-
-					<h2 class="mb-3" style="text-align: center;">${gpView.GP_name}</h2>
-
-					<div class="row ftco-animate">
-						<div class="col-md-12">
-							<div class="carousel-testimony owl-carousel ftco-owl">
-								<div class="item">
-									<img src="http://54.180.89.92:8080/img${gpView.GP_image1}"
-										alt="" class="img-fluid" width="200">
-								</div>
-								<div class="item">
-									<img src="http://54.180.89.92:8080/img${gpView.GP_image2}"
-										alt="" class="img-fluid" width="200">
-								</div>
-								<div class="item">
-									<img src="http://54.180.89.92:8080/img${gpView.GP_image3}"
-										alt="" class="img-fluid" width="200">
-								</div>
-								<div class="item">
-									<img src="http://54.180.89.92:8080/img${gpView.GP_image4}"
-										alt="" class="img-fluid" width="200">
-								</div>
->>>>>>> parent of 3c36e36... 0624comple
 							</div>
 						</div>
 					</div>
@@ -209,7 +126,6 @@
 					<c:if test="${gpView.GP_category eq 'parking' }">
 						주차 면수 : ${gpView.GP_slot }<br>기본시간 : ${gpView.GP_basetime }<br>기본 요금 : ${gpView.GP_basepay }<br>기본시간 초과시 : ${gpView.GP_overtime } ${gpView.GP_overpay }<br>하루 요금 : ${gpView.GP_onepay }<br>한달 요금 : ${gpView.GP_monthpay }
 					</c:if>
-<<<<<<< HEAD
 				</p>
 				<br> <br>
 				<p>${gpView.GP_content }</p>
@@ -232,70 +148,6 @@
 						onclick="location.href='/goodplace/main'">목록</button>
 				</div>
 
-=======
-					</p>
-					<br> <br>
-					<p>${gpView.GP_content }</p>
-					
-					<label class="label">위치</label>
-					<div id="map" style="width: 100%; height: 400px; margin: 10px"></div>
-					<code id="snippet" class="snippet"></code>
-
-					<div
-						style="display: flex; align-items: flex-end; justify-content: flex-end;">
-						<button id="updategoodplace" class="btn btn-primary" type="button"
-							style="margin-right: 10px"
-							onclick="location.href='/goodplace/gpUpdate?GP_id='+${gpView.GP_id }">수정</button>
-
-						<button id="deletegoodplace" class="btn btn-primary" type="button"
-							style="margin-right: 10px"
-							onclick="location.href='/goodplace/gpDelete?GP_id='+${gpView.GP_id }">삭제</button>
-
-						<button id="movemain" class="btn btn-primary" type="button"
-							style="margin-right: 10px"
-							onclick="location.href='/goodplace/main'">목록</button>
-					</div>
-
-
-					<div class="pt-5 mt-5" id="div_reply">
-						<div class="comment-form-wrap pt-5">
-							<form class="p-5 bg-light">
-								<input type="text" id="userId" value="${member.userId }"
-									style="display: none;" /> <input type="text" id="GP_REF_ID"
-									value="${gpView.GP_id }" style="display: none;" /> <label
-									for="gp_reply">댓글 남기기</label>
-								<textarea name="reply_content" id="reply_content" cols="30"
-									rows="3" class="form-control"></textarea>
-								<button id="submitReply" class="btn py-3 px-4 btn-primary"
-									type="button" style="margin-top: 10px;">등록</button>
-							</form>
-						</div>
-						<c:if test="${not empty reply }">
-							<h3 class="mb-5">댓글</h3>
-							<ul class="comment-list" id="reply_list">
-								<c:forEach items="${reply}" var="reply">
-									<li class="comment">
-										<div class="comment-body">
-											<h3>${reply.username }</h3>
-											<div class="meta">
-												<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
-													value="${reply.GP_date }" />
-											</div>
-											<p>${reply.GP_content }</p>
-											<p>
-												<a href="#" class="reply">Reply</a>
-											</p>
-										</div>
-									</li>
-								</c:forEach>
-							</ul>
-						</c:if>
-						<!-- END comment-list -->
-
-					</div>
-
-				</div>
->>>>>>> parent of 3c36e36... 0624comple
 			</div>
 		</div>
 	</section>
