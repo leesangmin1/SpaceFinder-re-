@@ -48,10 +48,6 @@ public class GoodplaceController {
 	public void getCategory(Model model) throws Exception {
 		logger.info("get gp category");
 
-		List<GpCategoryVO> catelist = gpService.cateList();
-
-		model.addAttribute("catelist", catelist);
-
 		List<GoodPListVO> gplist = gpService.gplist();
 
 		model.addAttribute("gplist", gplist);
@@ -112,7 +108,6 @@ public class GoodplaceController {
 				+ "/" + "주말(휴일) : " + req.getParameter("weekend_on_time") + " ~ "
 				+ req.getParameter("weekend_close_time");
 		vo.setGP_Runtime(runtime);
-		vo.setGP_REF_ID("");
 
 		gpService.GP_reg(vo);
 
@@ -124,14 +119,9 @@ public class GoodplaceController {
 	public void getGpView(@RequestParam("GP_id") int GP_id, Model model) throws Exception {
 		logger.info("get Gp view");
 
-		List<GpCategoryVO> catelist = gpService.cateList();
-		model.addAttribute("catelist", catelist);
 
 		GpViewVO gpView = gpService.gpView(GP_id);
 		model.addAttribute("gpView", gpView);
-
-		List<ReplyListVO> reply = gpService.replyList(GP_id);
-		model.addAttribute("reply", reply);
 
 		/*
 		 * List<ReplyListVO> reply = gpService.replyList(GP_id);

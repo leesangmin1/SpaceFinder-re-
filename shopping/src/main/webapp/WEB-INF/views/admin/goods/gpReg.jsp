@@ -67,13 +67,12 @@
 					class="row no-gutters slider-text align-items-center justify-content-center">
 					<div class="col-md-9 ftco-animate mb-0 text-center">
 						<p class="breadcrumbs mb-0">
-							<span class="mr-2"><a href="/" style="color: white;">SpaceFinder <i
-								class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a
-							href="/goodplace/main" style="color: white;">주차장등록 및 수정 <i class="fa fa-chevron-right"></i></a></span> <span style="color: white;">굿플 등록
-							<i class="fa fa-chevron-right"></i>
-						</span>
+							<span class="mr-2"><a href="/" style="color: white;">SpaceFinder
+									<i class="fa fa-chevron-right"></i>
+							</a></span> <span class="mr-2"><a href="/goodplace/main"
+								style="color: white;">주차장 등록 <i class="fa fa-chevron-right"></i></a></span>
 						</p>
-						<h1 class="mb-0 bread" style="color: white;">주차장 등록 및 수정</h1>
+						<h1 class="mb-0 bread" style="color: white;">주차장 등록</h1>
 					</div>
 				</div>
 			</div>
@@ -86,7 +85,7 @@
 
 				<div class="col-md-7">
 					<div class="contact-wrap w-100 p-md-5 p-4">
-						<h3 class="mb-4">주차장 등록 및 수정</h3>
+						<h3 class="mb-4">주차장 등록</h3>
 						<form role="form" method="post" autocomplete="off"
 							enctype="multipart/form-data" id="contactForm" name="contactForm"
 							class="contactForm">
@@ -95,28 +94,31 @@
 									<div class="form-group">
 										<label class="label" for="GP_name">주차장 이름</label> <input
 											type="text" class="form-control" name="GP_name" id="GP_name"
-											placeholder="PlaceName" required>
+											placeholder="PlaceName" value="공항교 강변 주차장" required>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="label" for="weekday_on_time">평일오픈시간</label> <input
 											type="time" class="form-control" name="weekday_on_time"
-											id="weekday_on_time" placeholder="평일오픈시간" value="09:20" required>
+											id="weekday_on_time" placeholder="평일오픈시간" value="00:00"
+											required>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="label" for="weekday_close_time">평일마감시간</label> <input
 											type="time" class="form-control" name="weekday_close_time"
-											id="weekday_close_time" placeholder="평일마감시간" required>
+											id="weekday_close_time" placeholder="평일마감시간" value="00:00"
+											required>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="label" for="weekend_on_time">주말(휴일)오픈시간</label>
 										<input type="time" class="form-control" name="weekend_on_time"
-											id="weekend_on_time" placeholder="주말(휴일)오픈시간" required>
+											id="weekend_on_time" placeholder="주말(휴일)오픈시간" value="00:00"
+											required>
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -124,7 +126,7 @@
 										<label class="label" for="weekend_close_time">주말(휴일)마감시간</label>
 										<input type="time" class="form-control"
 											name="weekend_close_time" id="weekend_close_time"
-											placeholder="주말(휴일)마감시간" required>
+											placeholder="주말(휴일)마감시간" value="00:00" required>
 									</div>
 								</div>
 
@@ -153,7 +155,7 @@
 									<div class="form-group">
 										<label class="label" for="GP_restday">정기휴무일</label> <input
 											type="text" class="form-control" name="GP_restday"
-											id="GP_restday" placeholder="둘째,넷째 일요일 쉽니다." required>
+											id="GP_restday" placeholder="둘째,넷째 일요일 쉽니다." value="없음" required>
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -161,7 +163,7 @@
 										<label class="label" for="GP_content">내용</label>
 										<textarea name="GP_content" class="form-control"
 											id="GP_content" cols="30" rows="6"
-											placeholder="당신이 만든 굿플레이스에 대해 설명해주세요" required></textarea>
+											placeholder="당신이 만든 굿플레이스에 대해 설명해주세요" required>공항교 강변 주차장 복현오거리 방향</textarea>
 									</div>
 								</div>
 
@@ -205,57 +207,57 @@
 									<div class="form-group">
 										<label class="label" for="GP_slot">주차 면수</label> <input
 											type="number" min="1" max="500" class="form-control"
-											name="GP_slot" id="GP_slot" placeholder="주차가능한 면수">
+											name="GP_slot" id="GP_slot" placeholder="주차가능한 면수" value="30">
 									</div>
 								</div>
 								<div class="col-md-6" id="GP_basetime_div">
 									<div class="form-group">
 										<label class="label" for="GP_basetime">기본 시간</label> <input
 											type="text" class="form-control" name="GP_basetime"
-											id="GP_basetime" placeholder="ex) 30분">
+											id="GP_basetime" placeholder="ex) 30분" value="30분">
 									</div>
 								</div>
 								<div class="col-md-6" id="GP_basepay_div">
 									<div class="form-group">
 										<label class="label" for="GP_basepay">기본 요금</label> <input
 											type="text" class="form-control" name="GP_basepay"
-											id="GP_basepay" placeholder="ex) 1000원">
+											id="GP_basepay" placeholder="ex) 1000원" value="1000원">
 									</div>
 								</div>
 								<div class="col-md-6" id="GP_overtime_div">
 									<div class="form-group">
 										<label class="label" for="GP_overtime">추가 시간</label> <input
 											type="text" class="form-control" name="GP_overtime"
-											id="GP_overtime" placeholder="ex) 10분당">
+											id="GP_overtime" placeholder="ex) 10분당" value="10분당">
 									</div>
 								</div>
 								<div class="col-md-6" id="GP_overpay_div">
 									<div class="form-group">
 										<label class="label" for="GP_overpay">추가 요금</label> <input
 											type="text" class="form-control" name="GP_overpay"
-											id="GP_overpay" placeholder="ex) 300원">
+											id="GP_overpay" placeholder="ex) 300원" value="300원">
 									</div>
 								</div>
 								<div class="col-md-6" id="GP_onepay_div">
 									<div class="form-group">
 										<label class="label" for="GP_onepay">하루 요금</label> <input
 											type="text" class="form-control" name="GP_onepay"
-											id="GP_onepay" placeholder="ex) 15000원">
+											id="GP_onepay" placeholder="ex) 15000원" value="15000원">
 									</div>
 								</div>
 								<div class="col-md-6" id="GP_monthpay_div">
 									<div class="form-group">
 										<label class="label" for="GP_monthpay">한달 요금</label> <input
 											type="text" class="form-control" name="GP_monthpay"
-											id="GP_monthpay" placeholder="ex) 250000원">
+											id="GP_monthpay" placeholder="ex) 250000원" value="250000원">
 									</div>
 								</div>
-								
+
 								<div class="col-md-12">
 									<div class="form-group">
 										<input type="submit" value="등록" class="btn btn-primary">
 										<input type="button" value="취소" class="btn btn-primary"
-											onclick="location.href='/goodplace/main'">
+											onclick="location.href='/admin/index'">
 										<div class="submitting"></div>
 									</div>
 								</div>
@@ -301,14 +303,139 @@
 	<script
 		src="/resources/publishing-company-master/js/jquery.animateNumber.min.js"></script>
 	<script src="/resources/publishing-company-master/js/scrollax.min.js"></script>
-	<
-	<!-- script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-	<!-- ?????구글맵???? -->
+	
 	<script src="/resources/publishing-company-master/js/google-map.js"></script>
 	<script src="/resources/publishing-company-master/js/main.js"></script>
 
+	<script>
+		$("#GP_image1")
+				.change(
+						function() {
+							const image = $("#GP_image1").val().toLowerCase();
+							if (image.includes(".png")
+									|| image.includes(".jpg")
+									|| image.includes(".jpeg")) {
+								if (image == $("#GP_image2").val()
+										.toLowerCase()
+										|| image == $("#GP_image3").val()
+												.toLowerCase()
+										|| image == $("#GP_image4").val()
+												.toLowerCase()) {
+									alert("이미지가 중복입니다. 다시선택해 주세요");
+									$(".select_img1 img").removeAttr("src");
+									$("#GP_image1").val("");
+								} else if (this.files && this.files[0]) {
+									const reader = new FileReader;
+									reader.onload = function(data) {
+										$(".select_img1 img").attr("src",
+												data.target.result).width(100);
+									}
+									reader.readAsDataURL(this.files[0]);
+								}
+							} else {
+								alert("이미지 확장자를 png,jpeg,jpg 로 해주세요");
+								$(".select_img1 img").removeAttr("src");
+								$("#GP_image1").val("");
+							}
 
+						});
+		$("#GP_image2")
+				.change(
+						function() {
+							const image = $("#GP_image2").val().toLowerCase();
+							if (image.includes(".png")
+									|| image.includes(".jpg")
+									|| image.includes(".jpeg")) {
+								if (image == $("#GP_image1").val()
+										.toLowerCase()
+										|| image == $("#GP_image3").val()
+												.toLowerCase()
+										|| image == $("#GP_image4").val()
+												.toLowerCase()) {
+									alert("이미지가 중복입니다. 다시선택해 주세요");
+									$(".select_img2 img").removeAttr("src");
+									$("#GP_image2").val("");
+								} else if (this.files && this.files[0]) {
+
+									const reader = new FileReader;
+									reader.onload = function(data) {
+										$(".select_img2 img").attr("src",
+												data.target.result).width(100);
+									}
+									reader.readAsDataURL(this.files[0]);
+								}
+							} else {
+								alert("이미지 확장자를 png,jpeg,jpg 로 해주세요");
+								$(".select_img2 img").removeAttr("src");
+								$("#GP_image2").val("");
+							}
+
+						});
+		$("#GP_image3")
+				.change(
+						function() {
+							const image = $("#GP_image3").val().toLowerCase();
+							if (image.includes(".png")
+									|| image.includes(".jpg")
+									|| image.includes(".jpeg")) {
+								if (image == $("#GP_image1").val()
+										.toLowerCase()
+										|| image == $("#GP_image2").val()
+												.toLowerCase()
+										|| image == $("#GP_image4").val()
+												.toLowerCase()) {
+									alert("이미지가 중복입니다. 다시선택해 주세요");
+									$(".select_img3 img").removeAttr("src");
+									$("#GP_image3").val("");
+								} else if (this.files && this.files[0]) {
+
+									const reader = new FileReader;
+									reader.onload = function(data) {
+										$(".select_img3 img").attr("src",
+												data.target.result).width(100);
+									}
+									reader.readAsDataURL(this.files[0]);
+								}
+							} else {
+								alert("이미지 확장자를 png,jpeg,jpg 로 해주세요");
+								$(".select_img3 img").removeAttr("src");
+								$("#GP_image3").val("");
+							}
+
+						});
+		$("#GP_image4")
+				.change(
+						function() {
+							const image = $("#GP_image4").val().toLowerCase();
+							if (image.includes(".png")
+									|| image.includes(".jpg")
+									|| image.includes(".jpeg")) {
+								if (image == $("#GP_image1").val()
+										.toLowerCase()
+										|| image == $("#GP_image2").val()
+												.toLowerCase()
+										|| image == $("#GP_image3").val()
+												.toLowerCase()) {
+									alert("이미지가 중복입니다. 다시선택해 주세요");
+									$(".select_img4 img").removeAttr("src");
+									$("#GP_image4").val("");
+								} else if (this.files && this.files[0]) {
+
+									const reader = new FileReader;
+									reader.onload = function(data) {
+										$(".select_img4 img").attr("src",
+												data.target.result).width(100);
+									}
+									reader.readAsDataURL(this.files[0]);
+								}
+							} else {
+								alert("이미지 확장자를 png,jpeg,jpg 로 해주세요");
+								$(".select_img4 img").removeAttr("src");
+								$("#GP_image4").val("");
+							}
+
+						});
+	</script>
 
 	<script id="code">
 		//지도를 삽입할 HTML 요소 또는 HTML 요소의 id를 지정합니다.

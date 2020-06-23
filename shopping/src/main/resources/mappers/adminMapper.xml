@@ -68,29 +68,29 @@
 
 <!-- 굿플 등록 -->
 <insert id="GP_reg">
- insert into GoodPlace (GP_id, userId, GP_name, GP_category, GP_lat, GP_long,
-       GP_Runtime, GP_content, GP_restday, GP_parking , GP_image1, GP_image2, GP_image3, GP_image4, GP_slot, GP_basetime, GP_basepay, GP_overtime, GP_overpay, GP_onepay, GP_monthpay, GP_ThumbImg1,GP_ThumbImg2,GP_ThumbImg3,GP_ThumbImg4)
-     values (GoodPlace_seq.nextval, #{userId}, #{GP_name}, #{GP_category}, #{GP_lat}, #{GP_long},
-        #{GP_Runtime}, #{GP_content}, #{GP_restday}, #{GP_parking}, #{GP_image1}, #{GP_image2}, #{GP_image3}, #{GP_image4}, #{GP_slot}, #{GP_basetime}, #{GP_basepay}, #{GP_overtime}, #{GP_overpay}, #{GP_onepay}, #{GP_monthpay}, #{GP_ThumbImg1}, #{GP_ThumbImg2}, #{GP_ThumbImg3}, #{GP_ThumbImg4})
+ insert into parking (GP_id, userId, GP_name, GP_lat, GP_long,
+       GP_Runtime, GP_content, GP_restday , GP_image1, GP_image2, GP_image3, GP_image4, GP_slot, GP_basetime, GP_basepay, GP_overtime, GP_overpay, GP_onepay, GP_monthpay, GP_ThumbImg1,GP_ThumbImg2,GP_ThumbImg3,GP_ThumbImg4)
+     values (PARKING_SEQ.nextval, #{userId}, #{GP_name}, #{GP_lat}, #{GP_long},
+        #{GP_Runtime}, #{GP_content}, #{GP_restday}, #{GP_image1}, #{GP_image2}, #{GP_image3}, #{GP_image4}, #{GP_slot}, #{GP_basetime}, #{GP_basepay}, #{GP_overtime}, #{GP_overpay}, #{GP_onepay}, #{GP_monthpay}, #{GP_ThumbImg1}, #{GP_ThumbImg2}, #{GP_ThumbImg3}, #{GP_ThumbImg4})
 </insert>
 
 <!-- 주차장 목록 --> 
 <select id="gplist" resultType="com.shopping.domain.GoodPListVO">
  select
- g.GP_id, g.userId, m.username, g.GP_name, g.GP_category, GP_lat, GP_long,
-       GP_Runtime, GP_content, GP_restday, GP_parking , GP_image1, GP_image2, GP_image3, GP_image4, GP_slot, GP_basetime, GP_basepay, GP_overtime, GP_overpay, GP_onepay, GP_monthpay, GP_ThumbImg1,GP_ThumbImg2,GP_ThumbImg3,GP_ThumbImg4
-    from GOODPLACE g, tbl_member m
-    where GP_REF_ID is null and g.userId = m.userId
+ g.GP_id, g.userId, m.username, g.GP_name, GP_lat, GP_long,
+       GP_Runtime, GP_content, GP_restday, GP_image1, GP_image2, GP_image3, GP_image4, GP_slot, GP_basetime, GP_basepay, GP_overtime, GP_overpay, GP_onepay, GP_monthpay, GP_ThumbImg1,GP_ThumbImg2,GP_ThumbImg3,GP_ThumbImg4
+    from parking g, tbl_member m
+    where g.userId = m.userId
         order by TO_NUMBER(GP_id) DESC
 </select>
 
 <!-- 굿플 조회 -->
 <select id="gpView" resultType="com.shopping.domain.GpViewVO">
 	select
-g.GP_id, g.userId, g.GP_name, g.GP_category, c.gp_ca_name, g.GP_lat, g.GP_long,
-       g.GP_Runtime, g.GP_content, g.GP_restday, g.GP_parking , g.GP_image1, g.GP_image2, g.GP_image3, g.GP_image4, g.GP_slot, g.GP_basetime, g.GP_basepay, g.GP_overtime, g.GP_overpay, g.GP_onepay, g.GP_monthpay
-         from GOODPLACE g, gp_category c
-            where g.GP_id = #{GP_id} and g.GP_category = c.gp_ca_id
+g.GP_id, g.userId, g.GP_name, g.GP_lat, g.GP_long,
+       g.GP_Runtime, g.GP_content, g.GP_restday, g.GP_image1, g.GP_image2, g.GP_image3, g.GP_image4, g.GP_slot, g.GP_basetime, g.GP_basepay, g.GP_overtime, g.GP_overpay, g.GP_onepay, g.GP_monthpay
+         from parking g
+            where g.GP_id = #{GP_id}
 </select>
 
 <!-- 댓글 작성 -->

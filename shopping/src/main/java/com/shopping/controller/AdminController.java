@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -27,6 +28,7 @@ import com.shopping.domain.ReplyListVO;
 import com.shopping.domain.ReplyVO;
 import com.shopping.service.AdminService;
 import com.shopping.service.GpService;
+import com.shopping.utils.MultiFiles;
 import com.shopping.utils.UploadFileUtils;
 
 import net.sf.json.JSONArray;
@@ -39,7 +41,7 @@ public class AdminController {
 
 	@Inject
 	AdminService adminService;
-	
+
 	@Inject
 	GpService gpService;
 
@@ -137,7 +139,6 @@ public class AdminController {
 
 		return "redirect:/admin/index";
 	}
-	
 
 	// 주차장 등록
 	@RequestMapping(value = "/goods/gpReg", method = RequestMethod.GET)
@@ -149,66 +150,91 @@ public class AdminController {
 		model.addAttribute("category", JSONArray.fromObject(category));
 	}
 
-	// 주차장 등록
+	// 굿플 등록
 	@RequestMapping(value = "/goods/gpReg", method = RequestMethod.POST)
-	public String postGoodpRegister(GoodPVO vo, MultipartFile file) throws Exception {
+	public String postGoodpRegister(GoodPVO vo, MultiFiles multiFiles, HttpServletRequest req) throws Exception {
 
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
 
-		if (file != null) {
-			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
-		} else {
-			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		int i = 0;
+		for (MultipartFile file : multiFiles.getGP_image()) {
+			if (file != null) {
+				fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(),
+						ymdPath);
+			} else {
+				fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			}
+			switch (i) {
+			case 0:
+				vo.setGP_image1(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+				vo.setGP_ThumbImg1(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+						+ fileName);
+				break;
+			case 1:
+				vo.setGP_image2(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+				vo.setGP_ThumbImg2(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+						+ fileName);
+				break;
+			case 2:
+				vo.setGP_image3(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+				vo.setGP_ThumbImg3(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+						+ fileName);
+				break;
+			case 3:
+				vo.setGP_image4(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+				vo.setGP_ThumbImg4(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_"
+						+ fileName);
+				break;
+			}
+			i++;
 		}
 
-//		vo.setGP_image(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-//		vo.setGP_ThumbImg(
-//				File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		String runtime = "평일 : " + req.getParameter("weekday_on_time") + " ~ " + req.getParameter("weekday_close_time")
+				+ "/" + "주말(휴일) : " + req.getParameter("weekend_on_time") + " ~ "
+				+ req.getParameter("weekend_close_time");
+		vo.setGP_Runtime(runtime);
 
-		adminService.GP_reg(vo);
+		gpService.GP_reg(vo);
 
 		return "redirect:/admin/index";
 	}
-	
-		// 굿플 목록
-		@RequestMapping(value = "/goods/gpList", method = RequestMethod.GET)
-		public void getGpList(Model model) throws Exception {
-			logger.info("get gp list");
 
-			List<GoodPVO> gplist = adminService.gplist();
+	// 굿플 목록
+	@RequestMapping(value = "/goods/gpList", method = RequestMethod.GET)
+	public void getGpList(Model model) throws Exception {
+		logger.info("get gp list");
 
-			model.addAttribute("gplist", gplist);
-		}
-		
-		// 굿플 조회
-		@RequestMapping(value = "/goods/gpView", method = RequestMethod.GET)
-		public void getGpView(@RequestParam("n") int GP_id, Model model) throws Exception {
-			logger.info("get Gp view");
+		List<GoodPVO> gplist = adminService.gplist();
 
-			GpViewVO gpView = adminService.gpView(GP_id);
-			model.addAttribute("gpView", gpView);
-			
-			List<ReplyListVO> reply = gpService.replyList(GP_id);
-			model.addAttribute("reply", reply);
-			
-			
-		}
-		
-		
-		//댓글 작성
-		@RequestMapping(value = "/goods/gpView", method = RequestMethod.POST)
-		public String registReply(ReplyVO reply, HttpSession session) throws Exception {
-		 logger.info("regist reply");
-		 
-		 MemberVO member = (MemberVO)session.getAttribute("member");
-		 reply.setUserId(member.getUserId());
-		 
-		 gpService.registReply(reply);
-		 
-		 return "redirect:/goods/gpView?n=" + reply.getGP_id();
-		}
-		
+		model.addAttribute("gplist", gplist);
+	}
+
+	// 굿플 조회
+	@RequestMapping(value = "/goods/gpView", method = RequestMethod.GET)
+	public void getGpView(@RequestParam("n") int GP_id, Model model) throws Exception {
+		logger.info("get Gp view");
+
+		GpViewVO gpView = adminService.gpView(GP_id);
+		model.addAttribute("gpView", gpView);
+
+		List<ReplyListVO> reply = gpService.replyList(GP_id);
+		model.addAttribute("reply", reply);
+
+	}
+
+	// 댓글 작성
+	@RequestMapping(value = "/goods/gpView", method = RequestMethod.POST)
+	public String registReply(ReplyVO reply, HttpSession session) throws Exception {
+		logger.info("regist reply");
+
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		reply.setUserId(member.getUserId());
+
+		gpService.registReply(reply);
+
+		return "redirect:/goods/gpView?n=" + reply.getGP_id();
+	}
 
 }

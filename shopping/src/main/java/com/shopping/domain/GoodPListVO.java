@@ -6,14 +6,12 @@ public class GoodPListVO {
 	private String GP_id;
 	private String userId;
 	private String GP_name;
-	private String GP_category;
 	private String GP_lat;
 	private String GP_long;
 	private String GP_Runtime;
 	private String GP_content;
 	private String GP_click;
 	private String GP_restday;
-	private String GP_parking;
 	private Date GP_date;
 	private String GP_image1;
 	private String GP_image2;
@@ -57,14 +55,6 @@ public class GoodPListVO {
 
 	public void setGP_name(String gP_name) {
 		GP_name = gP_name;
-	}
-
-	public String getGP_category() {
-		return GP_category;
-	}
-
-	public void setGP_category(String gP_category) {
-		GP_category = gP_category;
 	}
 
 	public String getGP_lat() {
@@ -113,14 +103,6 @@ public class GoodPListVO {
 
 	public void setGP_restday(String gP_restday) {
 		GP_restday = gP_restday;
-	}
-
-	public String getGP_parking() {
-		return GP_parking;
-	}
-
-	public void setGP_parking(String gP_parking) {
-		GP_parking = gP_parking;
 	}
 
 	public Date getGP_date() {
